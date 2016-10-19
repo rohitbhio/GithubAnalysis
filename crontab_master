@@ -1,0 +1,14 @@
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+
+##----------------Techtrends FeatureExtraction, ScoringRepos & PostProcessing----------------##
+##--- FeatureExtraction & ScoringRepos
+21 9 * * 5 cd /GithubAnalysis/Techtrends/Codebase/Derived_Metrics/; spark-submit --packages com.databricks:spark-csv_2.10:1.4.0 --conf spark.driver.memory=20g --conf spark.python.worker.memory=10g --conf spark.python.worker.reuse=true --conf spark.driver.maxResultSize=10g /GithubAnalysis/Techtrends/Codebase/Derived_Metrics/processor_main.py 2 >> /GithubAnalysis/Techtrends/Codebase/Derived_Metrics/derivedMetricsLog.log 2>&1
+
+##--- ProcessingOtherFeeds/TFIDF
+59 10 * * 1 cd /GithubAnalysis/Techtrends/Codebase/Tfidf/; python /GithubAnalysis/Techtrends/Codebase/Tfidf/tfidf_python.py >> /GithubAnalysis/Techtrends/Codebase/Tfidf/tfidfLogPython.log 2>&1
+
+##--- PostProcessing
+10 16 * * 0 cd /GithubAnalysis/Techtrends/Codebase/Post_Processing/; python /GithubAnalysis/Techtrends/Codebase/Post_Processing/post_processing_main.py >> /GithubAnalysis/Techtrends/Codebase/Post_Processing/postLog.log 2>&1

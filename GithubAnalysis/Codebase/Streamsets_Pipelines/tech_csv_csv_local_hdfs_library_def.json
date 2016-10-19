@@ -1,0 +1,2443 @@
+{
+  "pipelineConfig" : {
+    "schemaVersion" : 1,
+    "version" : 5,
+    "uuid" : "029445da-ce07-46be-b695-074e83091907",
+    "description" : "techtrends test pipeline",
+    "configuration" : [ {
+      "name" : "executionMode",
+      "value" : "STANDALONE"
+    }, {
+      "name" : "deliveryGuarantee",
+      "value" : "AT_LEAST_ONCE"
+    }, {
+      "name" : "shouldRetry",
+      "value" : true
+    }, {
+      "name" : "retryAttempts",
+      "value" : -1
+    }, {
+      "name" : "memoryLimit",
+      "value" : "${jvm:maxMemoryMB() * 0.65}"
+    }, {
+      "name" : "memoryLimitExceeded",
+      "value" : "STOP_PIPELINE"
+    }, {
+      "name" : "notifyOnStates",
+      "value" : [ "RUN_ERROR", "STOPPED", "FINISHED" ]
+    }, {
+      "name" : "emailIDs",
+      "value" : [ ]
+    }, {
+      "name" : "constants",
+      "value" : [ ]
+    }, {
+      "name" : "badRecordsHandling",
+      "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget::1"
+    }, {
+      "name" : "statsAggregatorStage",
+      "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_StatsNullDTarget::1"
+    }, {
+      "name" : "clusterSlaveMemory",
+      "value" : 1024
+    }, {
+      "name" : "clusterSlaveJavaOpts",
+      "value" : "-XX:PermSize=128M -XX:MaxPermSize=256M -Dlog4j.debug"
+    }, {
+      "name" : "clusterLauncherEnv",
+      "value" : [ ]
+    }, {
+      "name" : "mesosDispatcherURL",
+      "value" : null
+    }, {
+      "name" : "hdfsS3ConfDir",
+      "value" : null
+    } ],
+    "uiInfo" : {
+      "previewConfig" : {
+        "previewSource" : "CONFIGURED_SOURCE",
+        "batchSize" : 10,
+        "timeout" : 10000,
+        "writeToDestinations" : false,
+        "showHeader" : false,
+        "showFieldType" : true,
+        "rememberMe" : false
+      }
+    },
+    "stages" : [ {
+      "instanceName" : "com_streamsets_pipeline_stage_origin_spooldir_SpoolDirDSource_1",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_origin_spooldir_SpoolDirDSource",
+      "stageVersion" : "6",
+      "configuration" : [ {
+        "name" : "conf.dataFormatConfig.charset",
+        "value" : "UTF-8"
+      }, {
+        "name" : "conf.dataFormatConfig.removeCtrlChars",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.compression",
+        "value" : "NONE"
+      }, {
+        "name" : "conf.dataFormatConfig.filePatternInArchive",
+        "value" : "*"
+      }, {
+        "name" : "conf.dataFormatConfig.textMaxLineLen",
+        "value" : 20000000
+      }, {
+        "name" : "conf.dataFormatConfig.jsonContent",
+        "value" : "MULTIPLE_OBJECTS"
+      }, {
+        "name" : "conf.dataFormatConfig.jsonMaxObjectLen",
+        "value" : 4096
+      }, {
+        "name" : "conf.dataFormatConfig.csvFileFormat",
+        "value" : "CSV"
+      }, {
+        "name" : "conf.dataFormatConfig.csvHeader",
+        "value" : "NO_HEADER"
+      }, {
+        "name" : "conf.dataFormatConfig.csvMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "conf.dataFormatConfig.csvCustomDelimiter",
+        "value" : "|"
+      }, {
+        "name" : "conf.dataFormatConfig.csvCustomEscape",
+        "value" : "\\"
+      }, {
+        "name" : "conf.dataFormatConfig.csvCustomQuote",
+        "value" : "\""
+      }, {
+        "name" : "conf.dataFormatConfig.csvRecordType",
+        "value" : "LIST_MAP"
+      }, {
+        "name" : "conf.dataFormatConfig.csvSkipStartLines",
+        "value" : 0
+      }, {
+        "name" : "conf.dataFormatConfig.xmlRecordElement",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.xmlMaxObjectLen",
+        "value" : 4096
+      }, {
+        "name" : "conf.dataFormatConfig.logMode",
+        "value" : "COMMON_LOG_FORMAT"
+      }, {
+        "name" : "conf.dataFormatConfig.logMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "conf.dataFormatConfig.retainOriginalLine",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.customLogFormat",
+        "value" : "%h %l %u %t \"%r\" %>s %b"
+      }, {
+        "name" : "conf.dataFormatConfig.regex",
+        "value" : "^(\\S+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(\\S+) (\\S+) (\\S+)\" (\\d{3}) (\\d+)"
+      }, {
+        "name" : "conf.dataFormatConfig.fieldPathsToGroupName",
+        "value" : [ {
+          "fieldPath" : "/",
+          "group" : 1
+        } ]
+      }, {
+        "name" : "conf.dataFormatConfig.grokPatternDefinition",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.grokPattern",
+        "value" : "%{COMMONAPACHELOG}"
+      }, {
+        "name" : "conf.dataFormatConfig.onParseError",
+        "value" : "ERROR"
+      }, {
+        "name" : "conf.dataFormatConfig.maxStackTraceLines",
+        "value" : 50
+      }, {
+        "name" : "conf.dataFormatConfig.enableLog4jCustomLogFormat",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.log4jCustomLogFormat",
+        "value" : "%r [%t] %-5p %c %x - %m%n"
+      }, {
+        "name" : "conf.dataFormatConfig.avroSchema",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.protoDescriptorFile",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.messageType",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.isDelimited",
+        "value" : true
+      }, {
+        "name" : "conf.dataFormatConfig.binaryMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "conf.dataFormat",
+        "value" : "TEXT"
+      }, {
+        "name" : "conf.spoolDir",
+        "value" : "/tmp/GithubAnalysis/Techtrends/Data/feeds"
+      }, {
+        "name" : "conf.allowLateDirectory",
+        "value" : false
+      }, {
+        "name" : "conf.overrunLimit",
+        "value" : 10000
+      }, {
+        "name" : "conf.batchSize",
+        "value" : 1000
+      }, {
+        "name" : "conf.poolingTimeoutSecs",
+        "value" : 600
+      }, {
+        "name" : "conf.filePattern",
+        "value" : "*"
+      }, {
+        "name" : "conf.maxSpoolFiles",
+        "value" : 1000
+      }, {
+        "name" : "conf.initialFileToProcess",
+        "value" : null
+      }, {
+        "name" : "conf.errorArchiveDir",
+        "value" : null
+      }, {
+        "name" : "conf.postProcessing",
+        "value" : "NONE"
+      }, {
+        "name" : "conf.archiveDir",
+        "value" : null
+      }, {
+        "name" : "conf.retentionTimeMins",
+        "value" : 0
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      } ],
+      "uiInfo" : {
+        "yPos" : 50,
+        "stageType" : "SOURCE",
+        "rawSource" : {
+          "configuration" : [ {
+            "name" : "fileName"
+          } ]
+        },
+        "description" : "",
+        "label" : "Techtrends_feeds",
+        "xPos" : 60
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ "com_streamsets_pipeline_stage_origin_spooldir_SpoolDirDSource_1OutputLane14646965265440" ]
+    }, {
+      "instanceName" : "com_cisco_mazut_ss_destination_CopyToHDFSTarget_1",
+      "library" : "stream-sets",
+      "stageName" : "com_cisco_mazut_ss_destination_CopyToHDFSTarget",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config",
+        "value" : "/etc/hadoop/conf"
+      }, {
+        "name" : "hdfsRoot",
+        "value" : "hdfs://hdfs"
+      }, {
+        "name" : "hdfsOutDir",
+        "value" : "/data/GithubAnalysis/TechTrends/feeds"
+      }, {
+        "name" : "prettyPrint",
+        "value" : "true"
+      }, {
+        "name" : "recordBufferSize",
+        "value" : 10
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Copy to HDFS Destination 1",
+        "xPos" : 677,
+        "yPos" : 55,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "com_streamsets_pipeline_stage_origin_spooldir_SpoolDirDSource_1OutputLane14646965265440" ],
+      "outputLanes" : [ ]
+    } ],
+    "errorStage" : {
+      "instanceName" : "com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget_ErrorStage",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Error Records - Discard",
+        "xPos" : 717,
+        "yPos" : 50,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ ]
+    },
+    "info" : {
+      "name" : "tech_csv_csv_local_hdfs",
+      "description" : "techtrends test pipeline",
+      "created" : 1464757132561,
+      "lastModified" : 1464764249580,
+      "creator" : "admin",
+      "lastModifier" : "admin",
+      "lastRev" : "0",
+      "uuid" : "029445da-ce07-46be-b695-074e83091907",
+      "valid" : true
+    },
+    "metadata" : null,
+    "statsAggregatorStage" : {
+      "instanceName" : "com_streamsets_pipeline_stage_destination_devnull_StatsNullDTarget_StatsAggregatorStage",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_StatsNullDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Stats Aggregator - Discard",
+        "xPos" : 373,
+        "yPos" : 50,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ ]
+    },
+    "previewable" : true,
+    "valid" : true,
+    "issues" : {
+      "stageIssues" : { },
+      "issueCount" : 0,
+      "pipelineIssues" : [ ]
+    }
+  },
+  "pipelineRules" : {
+    "metricsRuleDefinitions" : [ {
+      "id" : "badRecordsAlertID",
+      "alertText" : "High incidence of Bad Records",
+      "metricId" : "pipeline.batchErrorRecords.meter",
+      "metricType" : "METER",
+      "metricElement" : "METER_COUNT",
+      "condition" : "${value() > 100}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1464697042525,
+      "valid" : true
+    }, {
+      "id" : "stageErrorAlertID",
+      "alertText" : "High incidence of Error Messages",
+      "metricId" : "pipeline.batchErrorMessages.meter",
+      "metricType" : "METER",
+      "metricElement" : "METER_COUNT",
+      "condition" : "${value() > 100}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1464697042525,
+      "valid" : true
+    }, {
+      "id" : "idleGaugeID",
+      "alertText" : "Pipeline is Idle",
+      "metricId" : "RuntimeStatsGauge.gauge",
+      "metricType" : "GAUGE",
+      "metricElement" : "TIME_OF_LAST_RECEIVED_RECORD",
+      "condition" : "${time:now() - value() > 120000}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1464697042525,
+      "valid" : true
+    }, {
+      "id" : "batchTimeAlertID",
+      "alertText" : "Batch taking more time to process",
+      "metricId" : "RuntimeStatsGauge.gauge",
+      "metricType" : "GAUGE",
+      "metricElement" : "CURRENT_BATCH_AGE",
+      "condition" : "${value() > 200}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1464697042525,
+      "valid" : true
+    }, {
+      "id" : "memoryLimitAlertID",
+      "alertText" : "Memory limit for pipeline exceeded",
+      "metricId" : "pipeline.memoryConsumed.counter",
+      "metricType" : "COUNTER",
+      "metricElement" : "COUNTER_COUNT",
+      "condition" : "${value() > (jvm:maxMemoryMB() * 0.65)}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1464697042525,
+      "valid" : true
+    } ],
+    "dataRuleDefinitions" : [ ],
+    "driftRuleDefinitions" : [ ],
+    "emailIds" : [ ],
+    "uuid" : "eaaddf48-281a-43ae-b374-c05cbf0fd41e",
+    "ruleIssues" : null
+  },
+  "libraryDefinitions" : {
+    "pipeline" : [ {
+      "configDefinitions" : [ {
+        "fieldName" : "executionMode",
+        "name" : "executionMode",
+        "type" : "MODEL",
+        "defaultValue" : "STANDALONE",
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "",
+        "label" : "Execution Mode",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ ],
+        "elConstantDefinitionsIdx" : [ ],
+        "group" : "",
+        "model" : {
+          "values" : [ "STANDALONE", "CLUSTER_BATCH", "CLUSTER_YARN_STREAMING", "CLUSTER_MESOS_STREAMING" ],
+          "labels" : [ "Standalone", "Cluster Batch", "Cluster Yarn Streaming", "Cluster Mesos Streaming" ],
+          "valuesProviderClass" : "com.streamsets.datacollector.config.ExecutionModeChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 10,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "deliveryGuarantee",
+        "name" : "deliveryGuarantee",
+        "type" : "MODEL",
+        "defaultValue" : "AT_LEAST_ONCE",
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "",
+        "label" : "Delivery Guarantee",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ ],
+        "elConstantDefinitionsIdx" : [ ],
+        "group" : "",
+        "model" : {
+          "values" : [ "AT_LEAST_ONCE", "AT_MOST_ONCE" ],
+          "labels" : [ "At Least Once", "At Most Once" ],
+          "valuesProviderClass" : "com.streamsets.datacollector.config.DeliveryGuaranteeChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 20,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "shouldRetry",
+        "name" : "shouldRetry",
+        "type" : "BOOLEAN",
+        "defaultValue" : true,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "",
+        "label" : "Retry Pipeline on Error",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ ],
+        "elConstantDefinitionsIdx" : [ ],
+        "group" : "",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 30,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "retryAttempts",
+        "name" : "retryAttempts",
+        "type" : "NUMBER",
+        "defaultValue" : -1,
+        "max" : 9223372036854775807,
+        "dependsOn" : "shouldRetry",
+        "triggeredByValues" : [ true ],
+        "description" : "Max no of retries. To retry indefinitely, use -1. The wait time between retries starts at 15 seconds and doubles until reaching 5 minutes.",
+        "label" : "Retry Attempts",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 30,
+        "dependsOnMap" : {
+          "shouldRetry" : [ true ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "memoryLimit",
+        "name" : "memoryLimit",
+        "type" : "NUMBER",
+        "defaultValue" : "${jvm:maxMemoryMB() * 0.65}",
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Maximum amount of memory the pipeline can use. Configure in relationship to the SDC Java heap size. The default is 650 and a value of 0 or less disables the limit.",
+        "label" : "Max Pipeline Memory (MB)",
+        "required" : true,
+        "min" : 128,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 60,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "memoryLimitExceeded",
+        "name" : "memoryLimitExceeded",
+        "type" : "MODEL",
+        "defaultValue" : "STOP_PIPELINE",
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Behavior when the pipeline exceeds the memory limit. Tip: Configure an alert to indicate when the memory use approaches the limit.",
+        "label" : "On Memory Exceeded",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ ],
+        "elConstantDefinitionsIdx" : [ ],
+        "group" : "",
+        "model" : {
+          "values" : [ "LOG", "ALERT", "STOP_PIPELINE" ],
+          "labels" : [ "Log", "Log and alert", "Log, alert and stop pipeline" ],
+          "valuesProviderClass" : "com.streamsets.datacollector.config.MemoryLimitExceededChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 70,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "notifyOnStates",
+        "name" : "notifyOnStates",
+        "type" : "MODEL",
+        "defaultValue" : [ "RUN_ERROR", "STOPPED", "FINISHED" ],
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Notifies via email when pipeline gets to the specified states",
+        "label" : "Notify on Pipeline State Changes",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ ],
+        "elConstantDefinitionsIdx" : [ ],
+        "group" : "",
+        "model" : {
+          "values" : [ "RUNNING", "START_ERROR", "RUN_ERROR", "STOPPED", "FINISHED", "DISCONNECTED", "CONNECTING" ],
+          "labels" : [ "Running", "Start Error", "Run Error", "Stopped", "Finished", "Disconnected", "Connecting" ],
+          "valuesProviderClass" : "com.streamsets.datacollector.config.PipelineStateChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "MULTI_VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 75,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "emailIDs",
+        "name" : "emailIDs",
+        "type" : "LIST",
+        "defaultValue" : [ ],
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Email Addresses",
+        "label" : "Email IDs",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 76,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "constants",
+        "name" : "constants",
+        "type" : "MAP",
+        "defaultValue" : [ ],
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "",
+        "label" : "Constants",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "CONSTANTS",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 80,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "badRecordsHandling",
+        "name" : "badRecordsHandling",
+        "type" : "MODEL",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "",
+        "label" : "Error Records",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ ],
+        "elConstantDefinitionsIdx" : [ ],
+        "group" : "BAD_RECORDS",
+        "model" : {
+          "values" : [ "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget::1", "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_sdcipc_ToErrorSdcIpcDTarget::1", "streamsets-datacollector-elasticsearch_2_0-lib::com_streamsets_pipeline_stage_destination_elasticsearch_ToErrorElasticSearchDTarget::3", "streamsets-datacollector-elasticsearch_1_7-lib::com_streamsets_pipeline_stage_destination_elasticsearch_ToErrorElasticSearchDTarget::3", "streamsets-datacollector-elasticsearch_1_6-lib::com_streamsets_pipeline_stage_destination_elasticsearch_ToErrorElasticSearchDTarget::3", "streamsets-datacollector-elasticsearch_1_4-lib::com_streamsets_pipeline_stage_destination_elasticsearch_ToErrorElasticSearchDTarget::3", "streamsets-datacollector-elasticsearch_2_1-lib::com_streamsets_pipeline_stage_destination_elasticsearch_ToErrorElasticSearchDTarget::3", "streamsets-datacollector-elasticsearch_1_5-lib::com_streamsets_pipeline_stage_destination_elasticsearch_ToErrorElasticSearchDTarget::3", "streamsets-datacollector-elasticsearch_2_2-lib::com_streamsets_pipeline_stage_destination_elasticsearch_ToErrorElasticSearchDTarget::3", "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_recordstolocalfilesystem_ToErrorLocalFSDTarget::1", "streamsets-datacollector-cdh_kafka_1_3-lib::com_streamsets_pipeline_stage_destination_kafka_ToErrorKafkaDTarget::2", "streamsets-datacollector-apache-kafka_0_8_2-lib::com_streamsets_pipeline_stage_destination_kafka_ToErrorKafkaDTarget::2", "streamsets-datacollector-cdh_kafka_1_2-lib::com_streamsets_pipeline_stage_destination_kafka_ToErrorKafkaDTarget::2", "streamsets-datacollector-hdp_2_3-lib::com_streamsets_pipeline_stage_destination_kafka_ToErrorKafkaDTarget::2", "streamsets-datacollector-apache-kafka_0_9-lib::com_streamsets_pipeline_stage_destination_kafka_ToErrorKafkaDTarget::2", "streamsets-datacollector-hdp_2_2-lib::com_streamsets_pipeline_stage_destination_kafka_ToErrorKafkaDTarget::2", "streamsets-datacollector-apache-kafka_0_8_1-lib::com_streamsets_pipeline_stage_destination_kafka_ToErrorKafkaDTarget::2" ],
+          "labels" : [ "Discard (Library: Basic)", "Write to Another Pipeline (Library: Basic)", "Write to Elasticsearch (Library: Elasticsearch 2.0.2)", "Write to Elasticsearch (Library: Elasticsearch 1.7.4)", "Write to Elasticsearch (Library: Elasticsearch 1.6.2)", "Write to Elasticsearch (Library: Elasticsearch 1.4.5)", "Write to Elasticsearch (Library: Elasticsearch 2.1.2)", "Write to Elasticsearch (Library: Elasticsearch 1.5.2)", "Write to Elasticsearch (Library: Elasticsearch 2.2.2)", "Write to File (Library: Basic)", "Write to Kafka (Library: CDH Kafka 1.3.2 (0.8.2.0))", "Write to Kafka (Library: Apache Kafka 0.8.2.1)", "Write to Kafka (Library: CDH Kafka 1.2.0 (0.8.2.0))", "Write to Kafka (Library: HDP 2.3.0)", "Write to Kafka (Library: Apache Kafka 0.9.0.0)", "Write to Kafka (Library: HDP 2.2.0)", "Write to Kafka (Library: Apache Kafka 0.8.1.1)" ],
+          "valuesProviderClass" : "com.streamsets.datacollector.config.ErrorHandlingChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 90,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "statsAggregatorStage",
+        "name" : "statsAggregatorStage",
+        "type" : "MODEL",
+        "defaultValue" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_StatsNullDTarget::1",
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "",
+        "label" : "Statistics Aggregator",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ ],
+        "elConstantDefinitionsIdx" : [ ],
+        "group" : "STATS",
+        "model" : {
+          "values" : [ "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_StatsNullDTarget::1", "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_recordstolocalfilesystem_StatsLocalFSDTarget::1", "streamsets-datacollector-cdh_kafka_1_3-lib::com_streamsets_pipeline_stage_destination_kafka_StatsKafkaDTarget::2", "streamsets-datacollector-apache-kafka_0_8_2-lib::com_streamsets_pipeline_stage_destination_kafka_StatsKafkaDTarget::2", "streamsets-datacollector-cdh_kafka_1_2-lib::com_streamsets_pipeline_stage_destination_kafka_StatsKafkaDTarget::2", "streamsets-datacollector-hdp_2_3-lib::com_streamsets_pipeline_stage_destination_kafka_StatsKafkaDTarget::2", "streamsets-datacollector-apache-kafka_0_9-lib::com_streamsets_pipeline_stage_destination_kafka_StatsKafkaDTarget::2", "streamsets-datacollector-hdp_2_2-lib::com_streamsets_pipeline_stage_destination_kafka_StatsKafkaDTarget::2", "streamsets-datacollector-apache-kafka_0_8_1-lib::com_streamsets_pipeline_stage_destination_kafka_StatsKafkaDTarget::2" ],
+          "labels" : [ "Discard (Library: Basic)", "Write to File (Library: Basic)", "Write to Kafka (Library: CDH Kafka 1.3.2 (0.8.2.0))", "Write to Kafka (Library: Apache Kafka 0.8.2.1)", "Write to Kafka (Library: CDH Kafka 1.2.0 (0.8.2.0))", "Write to Kafka (Library: HDP 2.3.0)", "Write to Kafka (Library: Apache Kafka 0.9.0.0)", "Write to Kafka (Library: HDP 2.2.0)", "Write to Kafka (Library: Apache Kafka 0.8.1.1)" ],
+          "valuesProviderClass" : "com.streamsets.datacollector.config.StatsTargetChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 95,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "clusterSlaveMemory",
+        "name" : "clusterSlaveMemory",
+        "type" : "NUMBER",
+        "defaultValue" : 1024,
+        "max" : 9223372036854775807,
+        "dependsOn" : "executionMode",
+        "triggeredByValues" : [ "CLUSTER_BATCH", "CLUSTER_YARN_STREAMING" ],
+        "description" : "",
+        "label" : "Worker Memory (MB)",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "CLUSTER",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 100,
+        "dependsOnMap" : {
+          "executionMode" : [ "CLUSTER_BATCH", "CLUSTER_YARN_STREAMING" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "clusterSlaveJavaOpts",
+        "name" : "clusterSlaveJavaOpts",
+        "type" : "STRING",
+        "defaultValue" : "-XX:PermSize=128M -XX:MaxPermSize=256M -Dlog4j.debug",
+        "max" : 9223372036854775807,
+        "dependsOn" : "executionMode",
+        "triggeredByValues" : [ "CLUSTER_BATCH", "CLUSTER_YARN_STREAMING" ],
+        "description" : "Add properties as needed. Changes to default settings are not recommended.",
+        "label" : "Worker Java Options",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "CLUSTER",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 110,
+        "dependsOnMap" : {
+          "executionMode" : [ "CLUSTER_BATCH", "CLUSTER_YARN_STREAMING" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "clusterLauncherEnv",
+        "name" : "clusterLauncherEnv",
+        "type" : "MAP",
+        "defaultValue" : [ ],
+        "max" : 9223372036854775807,
+        "dependsOn" : "executionMode",
+        "triggeredByValues" : [ "CLUSTER_BATCH", "CLUSTER_YARN_STREAMING" ],
+        "description" : "Sets additional environment variables for the cluster launcher",
+        "label" : "Launcher ENV",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "CLUSTER",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 120,
+        "dependsOnMap" : {
+          "executionMode" : [ "CLUSTER_BATCH", "CLUSTER_YARN_STREAMING" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "mesosDispatcherURL",
+        "name" : "mesosDispatcherURL",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "executionMode",
+        "triggeredByValues" : [ "CLUSTER_MESOS_STREAMING" ],
+        "description" : "URL for service which launches Mesos framework",
+        "label" : "Mesos Dispatcher URL",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "CLUSTER",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 130,
+        "dependsOnMap" : {
+          "executionMode" : [ "CLUSTER_MESOS_STREAMING" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "hdfsS3ConfDir",
+        "name" : "hdfsS3ConfDir",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "executionMode",
+        "triggeredByValues" : [ "CLUSTER_MESOS_STREAMING" ],
+        "description" : "An SDC resource directory or symbolic link with HDFS/S3 configuration files core-site.xml and hdfs-site.xml",
+        "label" : "Checkpoint Configuration Directory",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "CLUSTER",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 150,
+        "dependsOnMap" : {
+          "executionMode" : [ "CLUSTER_MESOS_STREAMING" ]
+        },
+        "evaluation" : "IMPLICIT"
+      } ],
+      "configGroupDefinition" : {
+        "classNameToGroupsMap" : {
+          "com.streamsets.datacollector.config.PipelineGroups" : [ "CONSTANTS", "BAD_RECORDS", "CLUSTER", "STATS" ]
+        },
+        "groupNameToLabelMapList" : [ {
+          "name" : "CONSTANTS",
+          "label" : "Constants"
+        }, {
+          "name" : "BAD_RECORDS",
+          "label" : "Error Records"
+        }, {
+          "name" : "CLUSTER",
+          "label" : "Cluster"
+        }, {
+          "name" : "STATS",
+          "label" : "Statistics"
+        } ]
+      }
+    } ],
+    "stages" : [ {
+      "icon" : "directory.png",
+      "name" : "com_streamsets_pipeline_stage_origin_spooldir_SpoolDirDSource",
+      "type" : "SOURCE",
+      "className" : "com.streamsets.pipeline.stage.origin.spooldir.SpoolDirDSource",
+      "version" : "6",
+      "privateClassLoader" : false,
+      "library" : "streamsets-datacollector-basic-lib",
+      "description" : "Reads files from a directory",
+      "label" : "Directory",
+      "libraryLabel" : "Basic",
+      "configDefinitions" : [ {
+        "fieldName" : "charset",
+        "name" : "conf.dataFormatConfig.charset",
+        "type" : "MODEL",
+        "defaultValue" : "UTF-8",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "TEXT", "JSON", "DELIMITED", "XML", "LOG" ],
+        "description" : "",
+        "label" : "Charset",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : {
+          "values" : [ "UTF-8", "US-ASCII", "UTF-16", "ISO-8859-1", "IBM-500", "GBK", "Big5", "Big5-HKSCS", "CESU-8", "EUC-JP", "EUC-KR", "GB18030", "GB2312", "IBM-Thai", "IBM00858", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "IBM037", "IBM1026", "IBM1047", "IBM273", "IBM277", "IBM278", "IBM280", "IBM284", "IBM285", "IBM290", "IBM297", "IBM420", "IBM424", "IBM437", "IBM500", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM862", "IBM863", "IBM864", "IBM865", "IBM866", "IBM868", "IBM869", "IBM870", "IBM871", "IBM918", "ISO-2022-CN", "ISO-2022-JP", "ISO-2022-JP-2", "ISO-2022-KR", "ISO-8859-13", "ISO-8859-15", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "JIS_X0201", "JIS_X0212-1990", "KOI8-R", "KOI8-U", "Shift_JIS", "TIS-620", "UTF-16BE", "UTF-16LE", "UTF-32", "UTF-32BE", "UTF-32LE", "windows-1250", "windows-1251", "windows-1252", "windows-1253", "windows-1254", "windows-1255", "windows-1256", "windows-1257", "windows-1258", "windows-31j", "x-Big5-HKSCS-2001", "x-Big5-Solaris", "x-COMPOUND_TEXT", "x-euc-jp-linux", "x-EUC-TW", "x-eucJP-Open", "x-IBM1006", "x-IBM1025", "x-IBM1046", "x-IBM1097", "x-IBM1098", "x-IBM1112", "x-IBM1122", "x-IBM1123", "x-IBM1124", "x-IBM1166", "x-IBM1364", "x-IBM1381", "x-IBM1383", "x-IBM300", "x-IBM33722", "x-IBM737", "x-IBM833", "x-IBM834", "x-IBM856", "x-IBM874", "x-IBM875", "x-IBM921", "x-IBM922", "x-IBM930", "x-IBM933", "x-IBM935", "x-IBM937", "x-IBM939", "x-IBM942", "x-IBM942C", "x-IBM943", "x-IBM943C", "x-IBM948", "x-IBM949", "x-IBM949C", "x-IBM950", "x-IBM964", "x-IBM970", "x-ISCII91", "x-ISO-2022-CN-CNS", "x-ISO-2022-CN-GB", "x-iso-8859-11", "x-JIS0208", "x-JISAutoDetect", "x-Johab", "x-MacArabic", "x-MacCentralEurope", "x-MacCroatian", "x-MacCyrillic", "x-MacDingbat", "x-MacGreek", "x-MacHebrew", "x-MacIceland", "x-MacRoman", "x-MacRomania", "x-MacSymbol", "x-MacThai", "x-MacTurkish", "x-MacUkraine", "x-MS932_0213", "x-MS950-HKSCS", "x-MS950-HKSCS-XP", "x-mswin-936", "x-PCK", "x-SJIS_0213", "x-UTF-16LE-BOM", "X-UTF-32BE-BOM", "X-UTF-32LE-BOM", "x-windows-50220", "x-windows-50221", "x-windows-874", "x-windows-949", "x-windows-950", "x-windows-iso2022jp" ],
+          "labels" : [ "UTF-8", "US-ASCII", "UTF-16", "ISO-8859-1", "IBM-500", "GBK", "Big5", "Big5-HKSCS", "CESU-8", "EUC-JP", "EUC-KR", "GB18030", "GB2312", "IBM-Thai", "IBM00858", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "IBM037", "IBM1026", "IBM1047", "IBM273", "IBM277", "IBM278", "IBM280", "IBM284", "IBM285", "IBM290", "IBM297", "IBM420", "IBM424", "IBM437", "IBM500", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM862", "IBM863", "IBM864", "IBM865", "IBM866", "IBM868", "IBM869", "IBM870", "IBM871", "IBM918", "ISO-2022-CN", "ISO-2022-JP", "ISO-2022-JP-2", "ISO-2022-KR", "ISO-8859-13", "ISO-8859-15", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "JIS_X0201", "JIS_X0212-1990", "KOI8-R", "KOI8-U", "Shift_JIS", "TIS-620", "UTF-16BE", "UTF-16LE", "UTF-32", "UTF-32BE", "UTF-32LE", "windows-1250", "windows-1251", "windows-1252", "windows-1253", "windows-1254", "windows-1255", "windows-1256", "windows-1257", "windows-1258", "windows-31j", "x-Big5-HKSCS-2001", "x-Big5-Solaris", "x-COMPOUND_TEXT", "x-euc-jp-linux", "x-EUC-TW", "x-eucJP-Open", "x-IBM1006", "x-IBM1025", "x-IBM1046", "x-IBM1097", "x-IBM1098", "x-IBM1112", "x-IBM1122", "x-IBM1123", "x-IBM1124", "x-IBM1166", "x-IBM1364", "x-IBM1381", "x-IBM1383", "x-IBM300", "x-IBM33722", "x-IBM737", "x-IBM833", "x-IBM834", "x-IBM856", "x-IBM874", "x-IBM875", "x-IBM921", "x-IBM922", "x-IBM930", "x-IBM933", "x-IBM935", "x-IBM937", "x-IBM939", "x-IBM942", "x-IBM942C", "x-IBM943", "x-IBM943C", "x-IBM948", "x-IBM949", "x-IBM949C", "x-IBM950", "x-IBM964", "x-IBM970", "x-ISCII91", "x-ISO-2022-CN-CNS", "x-ISO-2022-CN-GB", "x-iso-8859-11", "x-JIS0208", "x-JISAutoDetect", "x-Johab", "x-MacArabic", "x-MacCentralEurope", "x-MacCroatian", "x-MacCyrillic", "x-MacDingbat", "x-MacGreek", "x-MacHebrew", "x-MacIceland", "x-MacRoman", "x-MacRomania", "x-MacSymbol", "x-MacThai", "x-MacTurkish", "x-MacUkraine", "x-MS932_0213", "x-MS950-HKSCS", "x-MS950-HKSCS-XP", "x-mswin-936", "x-PCK", "x-SJIS_0213", "x-UTF-16LE-BOM", "X-UTF-32BE-BOM", "X-UTF-32LE-BOM", "x-windows-50220", "x-windows-50221", "x-windows-874", "x-windows-949", "x-windows-950", "x-windows-iso2022jp" ],
+          "valuesProviderClass" : "com.streamsets.pipeline.config.CharsetChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 300,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "TEXT", "JSON", "DELIMITED", "XML", "LOG" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "removeCtrlChars",
+        "name" : "conf.dataFormatConfig.removeCtrlChars",
+        "type" : "BOOLEAN",
+        "defaultValue" : false,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Use only if required as it impacts reading performance",
+        "label" : "Ignore Control Characters",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 310,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "compression",
+        "name" : "conf.dataFormatConfig.compression",
+        "type" : "MODEL",
+        "defaultValue" : "NONE",
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Compression formats gzip, bzip2, xz, lzma, Pack200, DEFLATE and Z are supported. Archive formats 7z, ar, arj, cpio, dump, tar and zip are supported.",
+        "label" : "Compression Format",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : {
+          "values" : [ "NONE", "COMPRESSED_FILE", "ARCHIVE", "COMPRESSED_ARCHIVE" ],
+          "labels" : [ "None", "Compressed File", "Archive", "Compressed Archive" ],
+          "valuesProviderClass" : "com.streamsets.pipeline.config.CompressionChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 320,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "filePatternInArchive",
+        "name" : "conf.dataFormatConfig.filePatternInArchive",
+        "type" : "STRING",
+        "defaultValue" : "*",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.compression",
+        "triggeredByValues" : [ "ARCHIVE", "COMPRESSED_ARCHIVE" ],
+        "description" : "A glob or regular expression that defines the pattern of the file names within the compressed directory.",
+        "label" : "File Name Pattern within Compressed Directory",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 330,
+        "dependsOnMap" : {
+          "conf.dataFormatConfig.compression" : [ "ARCHIVE", "COMPRESSED_ARCHIVE" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "textMaxLineLen",
+        "name" : "conf.dataFormatConfig.textMaxLineLen",
+        "type" : "NUMBER",
+        "defaultValue" : 1024,
+        "max" : 2147483647,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "TEXT" ],
+        "description" : "Longer lines are truncated",
+        "label" : "Max Line Length",
+        "required" : true,
+        "min" : 1,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "TEXT",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 340,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "TEXT" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "jsonContent",
+        "name" : "conf.dataFormatConfig.jsonContent",
+        "type" : "MODEL",
+        "defaultValue" : "MULTIPLE_OBJECTS",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "JSON" ],
+        "description" : "",
+        "label" : "JSON Content",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "JSON",
+        "model" : {
+          "values" : [ "ARRAY_OBJECTS", "MULTIPLE_OBJECTS" ],
+          "labels" : [ "JSON array of objects", "Multiple JSON objects" ],
+          "valuesProviderClass" : "com.streamsets.pipeline.config.JsonModeChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 350,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "JSON" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "jsonMaxObjectLen",
+        "name" : "conf.dataFormatConfig.jsonMaxObjectLen",
+        "type" : "NUMBER",
+        "defaultValue" : 4096,
+        "max" : 2147483647,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "JSON" ],
+        "description" : "Larger objects are not processed",
+        "label" : "Max Object Length (chars)",
+        "required" : true,
+        "min" : 1,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "JSON",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 360,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "JSON" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "csvFileFormat",
+        "name" : "conf.dataFormatConfig.csvFileFormat",
+        "type" : "MODEL",
+        "defaultValue" : "CSV",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "DELIMITED" ],
+        "description" : "",
+        "label" : "Delimiter Format Type",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "DELIMITED",
+        "model" : {
+          "values" : [ "CSV", "RFC4180", "EXCEL", "MYSQL", "TDF", "CUSTOM" ],
+          "labels" : [ "Default CSV (ignores empty lines)", "RFC4180 CSV", "MS Excel CSV", "MySQL CSV", "Tab Separated Values", "Custom" ],
+          "valuesProviderClass" : "com.streamsets.pipeline.config.CsvModeChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 370,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "DELIMITED" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "csvHeader",
+        "name" : "conf.dataFormatConfig.csvHeader",
+        "type" : "MODEL",
+        "defaultValue" : "NO_HEADER",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "DELIMITED" ],
+        "description" : "",
+        "label" : "Header Line",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "DELIMITED",
+        "model" : {
+          "values" : [ "WITH_HEADER", "IGNORE_HEADER", "NO_HEADER" ],
+          "labels" : [ "With Header Line", "Ignore Header Line", "No Header Line" ],
+          "valuesProviderClass" : "com.streamsets.pipeline.config.CsvHeaderChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 380,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "DELIMITED" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "csvMaxObjectLen",
+        "name" : "conf.dataFormatConfig.csvMaxObjectLen",
+        "type" : "NUMBER",
+        "defaultValue" : 1024,
+        "max" : 2147483647,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "DELIMITED" ],
+        "description" : "Larger objects are not processed",
+        "label" : "Max Record Length (chars)",
+        "required" : true,
+        "min" : 1,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "DELIMITED",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 390,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "DELIMITED" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "csvCustomDelimiter",
+        "name" : "conf.dataFormatConfig.csvCustomDelimiter",
+        "type" : "CHARACTER",
+        "defaultValue" : "|",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.csvFileFormat",
+        "triggeredByValues" : [ "CUSTOM" ],
+        "description" : "",
+        "label" : "Delimiter Character",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "DELIMITED",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 400,
+        "dependsOnMap" : {
+          "conf.dataFormatConfig.csvFileFormat" : [ "CUSTOM" ],
+          "conf.dataFormat" : [ "DELIMITED" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "csvCustomEscape",
+        "name" : "conf.dataFormatConfig.csvCustomEscape",
+        "type" : "CHARACTER",
+        "defaultValue" : "\\",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.csvFileFormat",
+        "triggeredByValues" : [ "CUSTOM" ],
+        "description" : "",
+        "label" : "Escape Character",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "DELIMITED",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 410,
+        "dependsOnMap" : {
+          "conf.dataFormatConfig.csvFileFormat" : [ "CUSTOM" ],
+          "conf.dataFormat" : [ "DELIMITED" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "csvCustomQuote",
+        "name" : "conf.dataFormatConfig.csvCustomQuote",
+        "type" : "CHARACTER",
+        "defaultValue" : "\"",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.csvFileFormat",
+        "triggeredByValues" : [ "CUSTOM" ],
+        "description" : "",
+        "label" : "Quote Character",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "DELIMITED",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 420,
+        "dependsOnMap" : {
+          "conf.dataFormatConfig.csvFileFormat" : [ "CUSTOM" ],
+          "conf.dataFormat" : [ "DELIMITED" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "csvRecordType",
+        "name" : "conf.dataFormatConfig.csvRecordType",
+        "type" : "MODEL",
+        "defaultValue" : "LIST_MAP",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "DELIMITED" ],
+        "description" : "",
+        "label" : "Root Field Type",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "DELIMITED",
+        "model" : {
+          "values" : [ "LIST", "LIST_MAP" ],
+          "labels" : [ "List", "List-Map" ],
+          "valuesProviderClass" : "com.streamsets.pipeline.config.CsvRecordTypeChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 430,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "DELIMITED" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "csvSkipStartLines",
+        "name" : "conf.dataFormatConfig.csvSkipStartLines",
+        "type" : "NUMBER",
+        "defaultValue" : 0,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "DELIMITED" ],
+        "description" : "Number of lines to skip before reading",
+        "label" : "Lines to Skip",
+        "required" : false,
+        "min" : 0,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "DELIMITED",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 435,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "DELIMITED" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "xmlRecordElement",
+        "name" : "conf.dataFormatConfig.xmlRecordElement",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "XML" ],
+        "description" : "XML element that acts as a record delimiter. No delimiter will treat the whole XML document as one record.",
+        "label" : "Delimiter Element",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "XML",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 440,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "XML" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "xmlMaxObjectLen",
+        "name" : "conf.dataFormatConfig.xmlMaxObjectLen",
+        "type" : "NUMBER",
+        "defaultValue" : 4096,
+        "max" : 2147483647,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "XML" ],
+        "description" : "Larger records are not processed",
+        "label" : "Max Record Length (chars)",
+        "required" : true,
+        "min" : 1,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "XML",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 450,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "XML" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "logMode",
+        "name" : "conf.dataFormatConfig.logMode",
+        "type" : "MODEL",
+        "defaultValue" : "COMMON_LOG_FORMAT",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "LOG" ],
+        "description" : "",
+        "label" : "Log Format",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "LOG",
+        "model" : {
+          "values" : [ "COMMON_LOG_FORMAT", "COMBINED_LOG_FORMAT", "APACHE_ERROR_LOG_FORMAT", "APACHE_CUSTOM_LOG_FORMAT", "REGEX", "GROK", "LOG4J" ],
+          "labels" : [ "Common Log Format", "Combined Log Format", "Apache Error Log Format", "Apache Access Log Custom Format", "Regular Expression", "Grok Pattern", "Log4j" ],
+          "valuesProviderClass" : "com.streamsets.pipeline.config.LogModeChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 460,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "logMaxObjectLen",
+        "name" : "conf.dataFormatConfig.logMaxObjectLen",
+        "type" : "NUMBER",
+        "defaultValue" : 1024,
+        "max" : 2147483647,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "LOG" ],
+        "description" : "Longer lines are truncated",
+        "label" : "Max Line Length",
+        "required" : true,
+        "min" : 1,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "LOG",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 470,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "retainOriginalLine",
+        "name" : "conf.dataFormatConfig.retainOriginalLine",
+        "type" : "BOOLEAN",
+        "defaultValue" : false,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "LOG" ],
+        "description" : "Indicates if the original line of log should be retained in the record",
+        "label" : "Retain Original Line",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "LOG",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 480,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "customLogFormat",
+        "name" : "conf.dataFormatConfig.customLogFormat",
+        "type" : "STRING",
+        "defaultValue" : "%h %l %u %t \"%r\" %>s %b",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.logMode",
+        "triggeredByValues" : [ "APACHE_CUSTOM_LOG_FORMAT" ],
+        "description" : "",
+        "label" : "Custom Log Format",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "LOG",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 490,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ],
+          "conf.dataFormatConfig.logMode" : [ "APACHE_CUSTOM_LOG_FORMAT" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "regex",
+        "name" : "conf.dataFormatConfig.regex",
+        "type" : "STRING",
+        "defaultValue" : "^(\\S+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(\\S+) (\\S+) (\\S+)\" (\\d{3}) (\\d+)",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.logMode",
+        "triggeredByValues" : [ "REGEX" ],
+        "description" : "The regular expression which is used to parse the log line.",
+        "label" : "Regular Expression",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "LOG",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 500,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ],
+          "conf.dataFormatConfig.logMode" : [ "REGEX" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "fieldPathsToGroupName",
+        "name" : "conf.dataFormatConfig.fieldPathsToGroupName",
+        "type" : "MODEL",
+        "defaultValue" : [ ],
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.logMode",
+        "triggeredByValues" : [ "REGEX" ],
+        "description" : "Map groups in the regular expression to field paths",
+        "label" : "Field Path To RegEx Group Mapping",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ ],
+        "elConstantDefinitionsIdx" : [ ],
+        "group" : "LOG",
+        "model" : {
+          "values" : null,
+          "labels" : null,
+          "valuesProviderClass" : null,
+          "configDefinitions" : [ {
+            "fieldName" : "fieldPath",
+            "name" : "fieldPath",
+            "type" : "STRING",
+            "defaultValue" : "/",
+            "max" : 9223372036854775807,
+            "dependsOn" : "",
+            "triggeredByValues" : null,
+            "description" : "",
+            "label" : "Field Path",
+            "required" : true,
+            "min" : -9223372036854775808,
+            "elDefs" : null,
+            "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+            "elConstantDefinitionsIdx" : [ "19" ],
+            "group" : "",
+            "model" : null,
+            "mode" : "text/plain",
+            "lines" : 0,
+            "displayPosition" : 10,
+            "dependsOnMap" : null,
+            "evaluation" : "IMPLICIT"
+          }, {
+            "fieldName" : "group",
+            "name" : "group",
+            "type" : "NUMBER",
+            "defaultValue" : 1,
+            "max" : 9223372036854775807,
+            "dependsOn" : "",
+            "triggeredByValues" : null,
+            "description" : "",
+            "label" : "Regular Expression Group",
+            "required" : true,
+            "min" : -9223372036854775808,
+            "elDefs" : null,
+            "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+            "elConstantDefinitionsIdx" : [ "19" ],
+            "group" : "",
+            "model" : null,
+            "mode" : "text/plain",
+            "lines" : 0,
+            "displayPosition" : 20,
+            "dependsOnMap" : null,
+            "evaluation" : "IMPLICIT"
+          } ],
+          "modelType" : "LIST_BEAN"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 510,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ],
+          "conf.dataFormatConfig.logMode" : [ "REGEX" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "grokPatternDefinition",
+        "name" : "conf.dataFormatConfig.grokPatternDefinition",
+        "type" : "TEXT",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.logMode",
+        "triggeredByValues" : [ "GROK" ],
+        "description" : "Define your own grok patterns which will be used to parse the logs",
+        "label" : "Grok Pattern Definition",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "LOG",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 520,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ],
+          "conf.dataFormatConfig.logMode" : [ "GROK" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "grokPattern",
+        "name" : "conf.dataFormatConfig.grokPattern",
+        "type" : "STRING",
+        "defaultValue" : "%{COMMONAPACHELOG}",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.logMode",
+        "triggeredByValues" : [ "GROK" ],
+        "description" : "The grok pattern which is used to parse the log line",
+        "label" : "Grok Pattern",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "LOG",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 530,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ],
+          "conf.dataFormatConfig.logMode" : [ "GROK" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "onParseError",
+        "name" : "conf.dataFormatConfig.onParseError",
+        "type" : "MODEL",
+        "defaultValue" : "ERROR",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.logMode",
+        "triggeredByValues" : [ "LOG4J" ],
+        "description" : "",
+        "label" : "On Parse Error",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "LOG",
+        "model" : {
+          "values" : [ "ERROR", "IGNORE", "INCLUDE_AS_STACK_TRACE" ],
+          "labels" : [ "ERROR", "IGNORE", "INCLUDE AS STACK TRACE" ],
+          "valuesProviderClass" : "com.streamsets.pipeline.config.OnParseErrorChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 540,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ],
+          "conf.dataFormatConfig.logMode" : [ "LOG4J" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "maxStackTraceLines",
+        "name" : "conf.dataFormatConfig.maxStackTraceLines",
+        "type" : "NUMBER",
+        "defaultValue" : 50,
+        "max" : 2147483647,
+        "dependsOn" : "conf.dataFormatConfig.onParseError",
+        "triggeredByValues" : [ "INCLUDE_AS_STACK_TRACE" ],
+        "description" : "Any line that does not match the expected pattern will be treated as a Stack trace as long as it is part of the same message. The stack trace will be trimmed to the specified number of lines.",
+        "label" : "Trim Stack Trace to Length",
+        "required" : true,
+        "min" : 0,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "LOG",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 550,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ],
+          "conf.dataFormatConfig.logMode" : [ "LOG4J" ],
+          "conf.dataFormatConfig.onParseError" : [ "INCLUDE_AS_STACK_TRACE" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "enableLog4jCustomLogFormat",
+        "name" : "conf.dataFormatConfig.enableLog4jCustomLogFormat",
+        "type" : "BOOLEAN",
+        "defaultValue" : false,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.logMode",
+        "triggeredByValues" : [ "LOG4J" ],
+        "description" : "",
+        "label" : "Use Custom Log Format",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "LOG",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 560,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ],
+          "conf.dataFormatConfig.logMode" : [ "LOG4J" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "log4jCustomLogFormat",
+        "name" : "conf.dataFormatConfig.log4jCustomLogFormat",
+        "type" : "STRING",
+        "defaultValue" : "%r [%t] %-5p %c %x - %m%n",
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormatConfig.enableLog4jCustomLogFormat",
+        "triggeredByValues" : [ true ],
+        "description" : "Specify your own custom log4j format.",
+        "label" : "Custom Log4J Format",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "LOG",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 570,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "LOG" ],
+          "conf.dataFormatConfig.enableLog4jCustomLogFormat" : [ true ],
+          "conf.dataFormatConfig.logMode" : [ "LOG4J" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "avroSchema",
+        "name" : "conf.dataFormatConfig.avroSchema",
+        "type" : "TEXT",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "AVRO" ],
+        "description" : "Overrides the schema associated with the message. Optionally use the runtime:loadResource function to use a schema stored in a file",
+        "label" : "Avro Schema",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "AVRO",
+        "model" : null,
+        "mode" : "application/json",
+        "lines" : 0,
+        "displayPosition" : 590,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "AVRO" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "protoDescriptorFile",
+        "name" : "conf.dataFormatConfig.protoDescriptorFile",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "PROTOBUF" ],
+        "description" : "Protobuf Descriptor File (.desc) path relative to SDC resources directory",
+        "label" : "Protobuf Descriptor File",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "PROTOBUF",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 600,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "PROTOBUF" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "messageType",
+        "name" : "conf.dataFormatConfig.messageType",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "PROTOBUF" ],
+        "description" : "Fully Qualified Message Type name. Use format <packageName>.<messageTypeName>",
+        "label" : "Message Type",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "PROTOBUF",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 610,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "PROTOBUF" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "isDelimited",
+        "name" : "conf.dataFormatConfig.isDelimited",
+        "type" : "BOOLEAN",
+        "defaultValue" : true,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "PROTOBUF" ],
+        "description" : "Should be checked when the input data is prepended with the message size. When unchecked only a single message can be present in the source file/Kafka message, etc.",
+        "label" : "Delimited Messages",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "PROTOBUF",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 620,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "PROTOBUF" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "binaryMaxObjectLen",
+        "name" : "conf.dataFormatConfig.binaryMaxObjectLen",
+        "type" : "NUMBER",
+        "defaultValue" : 1024,
+        "max" : 2147483647,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "BINARY" ],
+        "description" : "Larger objects are not processed",
+        "label" : "Max Data Size (bytes)",
+        "required" : true,
+        "min" : 1,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "BINARY",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 700,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "BINARY" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "dataFormat",
+        "name" : "conf.dataFormat",
+        "type" : "MODEL",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Format of data in the files",
+        "label" : "Data Format",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : {
+          "values" : [ "TEXT", "JSON", "LOG", "AVRO", "DELIMITED", "SDC_JSON", "XML", "PROTOBUF" ],
+          "labels" : [ "Text", "JSON", "Log", "Avro", "Delimited", "SDC Record", "XML", "Protobuf" ],
+          "valuesProviderClass" : "com.streamsets.pipeline.stage.origin.spooldir.DataFormatChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 0,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "spoolDir",
+        "name" : "conf.spoolDir",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Use a local directory",
+        "label" : "Files Directory",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 10,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "allowLateDirectory",
+        "name" : "conf.allowLateDirectory",
+        "type" : "BOOLEAN",
+        "defaultValue" : false,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Enables reading from a late-arriving directory. When enabled, the origin does not validate the configured path.",
+        "label" : "Allow Late Directory",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 12,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "overrunLimit",
+        "name" : "conf.overrunLimit",
+        "type" : "NUMBER",
+        "defaultValue" : 128,
+        "max" : 2147483647,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Low level reader buffer limit to avoid out of Memory errors",
+        "label" : "Buffer Limit (KB)",
+        "required" : true,
+        "min" : 1,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 15,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "batchSize",
+        "name" : "conf.batchSize",
+        "type" : "NUMBER",
+        "defaultValue" : 1000,
+        "max" : 2147483647,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Max number of records per batch",
+        "label" : "Batch Size (recs)",
+        "required" : true,
+        "min" : 0,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 20,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "poolingTimeoutSecs",
+        "name" : "conf.poolingTimeoutSecs",
+        "type" : "NUMBER",
+        "defaultValue" : 600,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Max time to wait for new files before sending an empty batch",
+        "label" : "Batch Wait Time (secs)",
+        "required" : false,
+        "min" : 1,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 30,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "filePattern",
+        "name" : "conf.filePattern",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "A glob or regular expression that defines the pattern of the file names in the directory. Files are processed in lexicographically increasing order.",
+        "label" : "File Name Pattern",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 40,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "maxSpoolFiles",
+        "name" : "conf.maxSpoolFiles",
+        "type" : "NUMBER",
+        "defaultValue" : 1000,
+        "max" : 2147483647,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "TEXT", "JSON", "XML", "DELIMITED", "LOG" ],
+        "description" : "Max number of files in the directory waiting to be processed. Additional files cause the pipeline to fail.",
+        "label" : "Max Files in Directory",
+        "required" : true,
+        "min" : 1,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 60,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "TEXT", "JSON", "XML", "DELIMITED", "LOG" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "initialFileToProcess",
+        "name" : "conf.initialFileToProcess",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.dataFormat",
+        "triggeredByValues" : [ "TEXT", "JSON", "XML", "DELIMITED", "LOG" ],
+        "description" : "When configured, the Data Collector does not process earlier (naturally ascending order) file names",
+        "label" : "First File to Process",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "FILES",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 50,
+        "dependsOnMap" : {
+          "conf.dataFormat" : [ "TEXT", "JSON", "XML", "DELIMITED", "LOG" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "errorArchiveDir",
+        "name" : "conf.errorArchiveDir",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Directory for files that could not be fully processed",
+        "label" : "Error Directory",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "POST_PROCESSING",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 100,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "postProcessing",
+        "name" : "conf.postProcessing",
+        "type" : "MODEL",
+        "defaultValue" : "NONE",
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Action to take after processing a file",
+        "label" : "File Post Processing",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "POST_PROCESSING",
+        "model" : {
+          "values" : [ "NONE", "ARCHIVE", "DELETE" ],
+          "labels" : [ "None", "Archive", "Delete" ],
+          "valuesProviderClass" : "com.streamsets.pipeline.config.PostProcessingOptionsChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 110,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "archiveDir",
+        "name" : "conf.archiveDir",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.postProcessing",
+        "triggeredByValues" : [ "ARCHIVE" ],
+        "description" : "Directory to archive files after they have been processed",
+        "label" : "Archive Directory",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "POST_PROCESSING",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 200,
+        "dependsOnMap" : {
+          "conf.postProcessing" : [ "ARCHIVE" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "retentionTimeMins",
+        "name" : "conf.retentionTimeMins",
+        "type" : "NUMBER",
+        "defaultValue" : 0,
+        "max" : 9223372036854775807,
+        "dependsOn" : "conf.postProcessing",
+        "triggeredByValues" : [ "ARCHIVE" ],
+        "description" : "How long archived files should be kept before deleting, a value of zero means forever",
+        "label" : "Archive Retention Time (mins)",
+        "required" : false,
+        "min" : 0,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "POST_PROCESSING",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 210,
+        "dependsOnMap" : {
+          "conf.postProcessing" : [ "ARCHIVE" ]
+        },
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "stageOnRecordError",
+        "name" : "stageOnRecordError",
+        "type" : "MODEL",
+        "defaultValue" : "TO_ERROR",
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Action to take with records sent to error",
+        "label" : "On Record Error",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "",
+        "model" : {
+          "values" : [ "DISCARD", "TO_ERROR", "STOP_PIPELINE" ],
+          "labels" : [ "Discard", "Send to Error", "Stop Pipeline" ],
+          "valuesProviderClass" : "com.streamsets.datacollector.config.OnRecordErrorChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 30,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      } ],
+      "onlineHelpRefUrl" : "index.html#Origins/Directory.html#task_gfj_ssv_yq",
+      "configGroupDefinition" : {
+        "classNameToGroupsMap" : {
+          "com.streamsets.pipeline.stage.origin.spooldir.Groups" : [ "FILES", "POST_PROCESSING", "TEXT", "JSON", "DELIMITED", "XML", "LOG", "AVRO", "BINARY", "PROTOBUF" ]
+        },
+        "groupNameToLabelMapList" : [ {
+          "name" : "FILES",
+          "label" : "Files"
+        }, {
+          "name" : "POST_PROCESSING",
+          "label" : "Post Processing"
+        }, {
+          "name" : "TEXT",
+          "label" : "Text"
+        }, {
+          "name" : "JSON",
+          "label" : "JSON"
+        }, {
+          "name" : "DELIMITED",
+          "label" : "Delimited"
+        }, {
+          "name" : "XML",
+          "label" : "XML"
+        }, {
+          "name" : "LOG",
+          "label" : "Log"
+        }, {
+          "name" : "AVRO",
+          "label" : "Avro"
+        }, {
+          "name" : "BINARY",
+          "label" : "Binary"
+        }, {
+          "name" : "PROTOBUF",
+          "label" : "Protobuf"
+        } ]
+      },
+      "rawSourceDefinition" : {
+        "configDefinitions" : [ {
+          "fieldName" : "fileName",
+          "name" : "fileName",
+          "type" : "STRING",
+          "defaultValue" : null,
+          "max" : 9223372036854775807,
+          "dependsOn" : "",
+          "triggeredByValues" : null,
+          "description" : "The full path of the file",
+          "label" : "File Path",
+          "required" : true,
+          "min" : -9223372036854775808,
+          "elDefs" : null,
+          "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+          "elConstantDefinitionsIdx" : [ "19" ],
+          "group" : "",
+          "model" : null,
+          "mode" : "text/plain",
+          "lines" : 0,
+          "displayPosition" : 0,
+          "dependsOnMap" : null,
+          "evaluation" : "IMPLICIT"
+        } ],
+        "rawSourcePreviewerClass" : "com.streamsets.pipeline.config.FileRawSourcePreviewer",
+        "mimeType" : "*/*"
+      },
+      "errorStage" : false,
+      "statsAggregatorStage" : false,
+      "variableOutputStreams" : false,
+      "outputStreams" : 1,
+      "outputStreamLabelProviderClass" : "com.streamsets.pipeline.api.StageDef$DefaultOutputStreams",
+      "outputStreamLabels" : null,
+      "executionModes" : [ "STANDALONE" ],
+      "resetOffset" : true,
+      "preconditions" : false,
+      "onRecordError" : true
+    }, {
+      "icon" : "default.png",
+      "name" : "com_cisco_mazut_ss_destination_CopyToHDFSTarget",
+      "type" : "TARGET",
+      "className" : "com.cisco.mazut.ss.destination.CopyToHDFSTarget",
+      "version" : "1",
+      "privateClassLoader" : false,
+      "library" : "stream-sets",
+      "description" : "Custom HDFS destination to store text files \"as is\", reads from /text record location",
+      "label" : "Copy to HDFS Destination",
+      "libraryLabel" : "Library 1.0.0",
+      "configDefinitions" : [ {
+        "fieldName" : "config",
+        "name" : "config",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "",
+        "label" : "Local directory with Hadoop config files",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "BASIC",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 10,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "hdfsRoot",
+        "name" : "hdfsRoot",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "",
+        "label" : "HDFS root",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "BASIC",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 20,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "hdfsOutDir",
+        "name" : "hdfsOutDir",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "",
+        "label" : "Output directory to store files",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "BASIC",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 30,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "prettyPrint",
+        "name" : "prettyPrint",
+        "type" : "STRING",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "",
+        "label" : "Pretty print (retain line breaks)",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "BASIC",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 40,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "recordBufferSize",
+        "name" : "recordBufferSize",
+        "type" : "NUMBER",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "",
+        "label" : "Record buffer",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "BASIC",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 50,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "stageOnRecordError",
+        "name" : "stageOnRecordError",
+        "type" : "MODEL",
+        "defaultValue" : "TO_ERROR",
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Action to take with records sent to error",
+        "label" : "On Record Error",
+        "required" : true,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "",
+        "model" : {
+          "values" : [ "DISCARD", "TO_ERROR", "STOP_PIPELINE" ],
+          "labels" : [ "Discard", "Send to Error", "Stop Pipeline" ],
+          "valuesProviderClass" : "com.streamsets.datacollector.config.OnRecordErrorChooserValues",
+          "configDefinitions" : null,
+          "modelType" : "VALUE_CHOOSER"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 30,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "stageRequiredFields",
+        "name" : "stageRequiredFields",
+        "type" : "MODEL",
+        "defaultValue" : [ ],
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Records without any of these fields are sent to error",
+        "label" : "Required Fields",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ],
+        "elConstantDefinitionsIdx" : [ "19" ],
+        "group" : "",
+        "model" : {
+          "values" : null,
+          "labels" : null,
+          "valuesProviderClass" : null,
+          "configDefinitions" : null,
+          "modelType" : "FIELD_SELECTOR_MULTI_VALUE"
+        },
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 10,
+        "dependsOnMap" : null,
+        "evaluation" : "IMPLICIT"
+      }, {
+        "fieldName" : "stageRecordPreconditions",
+        "name" : "stageRecordPreconditions",
+        "type" : "LIST",
+        "defaultValue" : null,
+        "max" : 9223372036854775807,
+        "dependsOn" : "",
+        "triggeredByValues" : null,
+        "description" : "Records that don't satisfy all the preconditions are sent to error",
+        "label" : "Preconditions",
+        "required" : false,
+        "min" : -9223372036854775808,
+        "elDefs" : null,
+        "elFunctionDefinitionsIdx" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40" ],
+        "elConstantDefinitionsIdx" : [ "19", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56" ],
+        "group" : "",
+        "model" : null,
+        "mode" : "text/plain",
+        "lines" : 0,
+        "displayPosition" : 20,
+        "dependsOnMap" : null,
+        "evaluation" : "EXPLICIT"
+      } ],
+      "onlineHelpRefUrl" : "",
+      "configGroupDefinition" : {
+        "classNameToGroupsMap" : {
+          "com.cisco.mazut.ss.destination.Groups" : [ "BASIC" ]
+        },
+        "groupNameToLabelMapList" : [ {
+          "name" : "BASIC",
+          "label" : "Basic"
+        } ]
+      },
+      "rawSourceDefinition" : null,
+      "errorStage" : false,
+      "statsAggregatorStage" : false,
+      "variableOutputStreams" : false,
+      "outputStreams" : 0,
+      "outputStreamLabelProviderClass" : null,
+      "outputStreamLabels" : null,
+      "executionModes" : [ "STANDALONE", "CLUSTER_BATCH", "CLUSTER_YARN_STREAMING", "CLUSTER_MESOS_STREAMING" ],
+      "resetOffset" : false,
+      "preconditions" : true,
+      "onRecordError" : true
+    }, {
+      "icon" : "",
+      "name" : "com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget",
+      "type" : "TARGET",
+      "className" : "com.streamsets.pipeline.stage.destination.devnull.ToErrorNullDTarget",
+      "version" : "1",
+      "privateClassLoader" : false,
+      "library" : "streamsets-datacollector-basic-lib",
+      "description" : "Discards records",
+      "label" : "Discard",
+      "libraryLabel" : "Basic",
+      "configDefinitions" : [ ],
+      "onlineHelpRefUrl" : "index.html#Pipeline_Configuration/ErrorHandling.html#concept_kgc_l4y_5r",
+      "configGroupDefinition" : {
+        "classNameToGroupsMap" : { },
+        "groupNameToLabelMapList" : [ ]
+      },
+      "rawSourceDefinition" : null,
+      "errorStage" : true,
+      "statsAggregatorStage" : false,
+      "variableOutputStreams" : false,
+      "outputStreams" : 0,
+      "outputStreamLabelProviderClass" : null,
+      "outputStreamLabels" : null,
+      "executionModes" : [ "STANDALONE", "CLUSTER_BATCH", "CLUSTER_YARN_STREAMING", "CLUSTER_MESOS_STREAMING" ],
+      "resetOffset" : false,
+      "preconditions" : false,
+      "onRecordError" : false
+    }, {
+      "icon" : "",
+      "name" : "com_streamsets_pipeline_stage_destination_devnull_StatsNullDTarget",
+      "type" : "TARGET",
+      "className" : "com.streamsets.pipeline.stage.destination.devnull.StatsNullDTarget",
+      "version" : "1",
+      "privateClassLoader" : false,
+      "library" : "streamsets-datacollector-basic-lib",
+      "description" : "Discards Pipeline Statistic Records",
+      "label" : "Discard",
+      "libraryLabel" : "Basic",
+      "configDefinitions" : [ ],
+      "onlineHelpRefUrl" : "",
+      "configGroupDefinition" : {
+        "classNameToGroupsMap" : { },
+        "groupNameToLabelMapList" : [ ]
+      },
+      "rawSourceDefinition" : null,
+      "errorStage" : false,
+      "statsAggregatorStage" : true,
+      "variableOutputStreams" : false,
+      "outputStreams" : 0,
+      "outputStreamLabelProviderClass" : null,
+      "outputStreamLabels" : null,
+      "executionModes" : [ "STANDALONE", "CLUSTER_BATCH", "CLUSTER_YARN_STREAMING", "CLUSTER_MESOS_STREAMING" ],
+      "resetOffset" : false,
+      "preconditions" : false,
+      "onRecordError" : false
+    } ],
+    "elCatalog" : null,
+    "runtimeConfigs" : null,
+    "stageIcons" : {
+      "stream-sets:com_cisco_mazut_ss_destination_CopyToHDFSTarget" : "iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAC4jAAAuIwF4pT92AAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBJbWFnZVJlYWR5PC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgqyI37xAAAJwElEQVRoBb2XecydVRGHPxVaLFAQatWW1oKAAVFSEERCbGXXIJACFQQES6SojfqXWlyghM1IhBgWKUIDCsQEwxIMaEUpiyVAgLDUiK1SyyZI1VCrUrfnee/7u07f3u+jregkzz1z5pwzZ+Zs996hoY2T15VhE9CPhatgBfwD/gn/gtXwE5gN9ovU8bH938u3M+PZYNAGW/k79SQR++PYjoLI61vFcqMT2tCBTmZAB8B0MMiXwZWeCAfBnqBf+0XUE/Bc9PPbhk0oTVaxXX//EzGgBOCk9TjUCcdQmQn3QVbeI6VuoLF9CV2ZAtNUWskcqb8mZXU6GY9HwHFwDOwDo6Erb8TwdUjACT6l9o+2gy6kvAg2bet1vta08UWcvQ0XF8NS8LgksN+h3w/nwq7Qlc9iyF1I8Cl/Sds4cNeWwLXg7ioberR7ozqfb2jru1M+AQl6uPIl+rjq3oUqc6hkTIJPmaM0re1zWRn4XyWR4HfCoStlAE4qrmjwfMeWIH+BbQZUqUmsoSEJ3IieI3gBuj5OBCUx9Gob8JnMRzHmZtCpk+YoJNBa2pZktFv/BoyFiEnEx9/Q7bcY8iDsiP4C/AY8skqOcK+2np8Z5CV1kgRmGRKI7V2yutoXwvYQOQHlKciYH6Dn8qI2X4a25Wht8C5k9b1Md4DOhgs2ySSYWtqWcV5Q71HElf4KfAemtsYE6hedfp6E3KUsaNt15CKd30W3P0GCegZ9EdwDv4YcAdtd8QSb/pbabFNfCnvAIHHRMq93LvMe0XZOcoPGrmOLoy/S4sS+LKeCz91m4JO3NUwDV9Azaz9JsKmnjP339DkMFIOSzJdyPLaV4Fif7ch6JxFHP2TkK3BAPAxTuqrfhr+Ck9ajkwQsk8Qq9NkQcT6Dyz04BD2+fP1cuMTkTuWIo64raRxN06NwdqeL7X7D+rJsCXVVplP3eCVoE4meMklYvxRc7a7k1bOPR2kqfAEOhkgSSr1fJoHJWG6BKW3LNpQzYD7cBV4wE7waciRQh7aFb8GggGOriennc7AbeMmvgPSz/AuYgG2PwByIDEwiCXiRjgRX2FfhXqiOu/qXad8EIrNQXgT7DTpSXu566f9IXeI3Sa7BNhOU08B2f7Ik+JSY1haPkE+Y2xynTqjjihOk/cPoSpz6k3oxpL0eH23VX/ok8CTnS/cRUHxA4m9uYxlwH3KmPd+3QBx7meM0tpRJ4hr6ZAfjZytsdRFMYpAfbdWeRFZj3wsiZ6E4r36Ob42Zq79yTuoLlABT6rROUu3qro4XXHEX+o7RT4YVYD99JMD46JZp94meAJEcI/svg8lpqCv3fYxxaKZ/hu72p90yk92N7jYr8ZfjpO3dsBAyNjuXei0z3630rwtxXjs+X6LnU28kE+XLS2c/Bi/Q3nA43A7au7swUgJ0b5KJf9/608GjoS/HSnxmd1J33ogv3BJwXJJfjr49NOJT5btrh6/CaKjiSpiU7VmhBGHpS9XdAUx9SRIa9oefgeOCQSdwbVdDfdn8ZVv7ZuFc5Gabrms7nKWhFYP2OIxq65+n1MmgBBZhHykBXegriWyB/kl4AhKY5StwDYyHyGyUrHoCT7L+gWq+KBzsy5Mz53Y7oRLbieiZLA7icH7Ts/eRccW0lhp/Gt8EJ8Cl4JmeBknSR+EM6M5pPfNfgT50JnhZvWiDJBMeT2MGpkwCl5eBr5aAXQ1ypH770p57Z8CZJ8mkfobnzMBcwcdAmQh7gPWnwMkc4A8rJ1VPUqiNLI+ynqULoC93ek0Z8170T8NR4G+u9MuuYGokyd9nbQX4e0Q5GpaBmT4EkyDiFmt3wu5KzGo7dSdqzf3Cie1T+3l3psMCqD8p6l3LfHX+O+nvXRq60g/kEFgF6exKm5CyOdwItlXH9tGWX4vdnaGpEQPvtnn+vci3Qo6kvvQZv4klZRbP/odBI+/h0wDdDjv6EthBTgJlB3gcbI/zOuk+2JVukAZen0P77AznwqOQwOI3vqs9eoK37jFTtukVvX9dNhhUnKxEP7Dt4KVKwN3yWdp2bfslgRyV1twU+/F5Meg3QenLHY3P2FNqN57E5GPjsxo5RWUM3AYOMst0Xoa+EyizwPa0Vf1h7BNB8WxLRH0G+BMlPwEc+2qBO089qo65F1yEyCiUn1vx+fwDVMfqCyFyCYq2mkAmuAP71m3H7IDV/UEfdXUdL9Wm38xtm4sYm6VfdqfCVqC4u8qZYPvQoa3SdTzPRsT7YaZ2tk+cJ4HvYdNpHE9CXwDepfQ1qEFB6y/U9pexL4I54GXvindgNei/6aSigwToH+u9QRkLz4J90q6elboAPbIbyhKwXUyyBhZ7gk495WL66+9D0L38mIbeAn5rp//TdhoFXXHbfHWUSZDtawydD38EKqPha7ALmJzHqR4pqs3EJhS7CT4AN4Gv4K/gOahifO+AY+Bj8E4wAXf8BhN4ERSNEVfCP9XKtpCLmWNi3wSR8d4lj6Oi3/RtDHxkUsc55mb4LjwIHofI5igGvAP4xH8Q9oQtQXH39OERvc6JloLihEliedFdsUiCsJ7+mdw32UkygX0iddwNGM+BR9LYlhMoXeWD4H0wDrqi78Q4H/1+O4xvFRvMynIORPZDcTe0x0E9159oO76fMuNre9UvaftauIqiHAzDfbE5Z/DIGcdDMBGao/EC5Y+sFKmrXsx91dXXqeICKO6aQSh1vBMqz8O8RusdsSzIFthcTY+gd8cgHe8cEft6jE3Y4I+FZ6znbF9GZQlsCsqbe0Xz6aA4S2lDAktfX6qrbED0W5PQtgr8saYk+V7tP5/O77F2vHNZijGYmP6PhCdBe+Mn2+gFzLflQnRfFWU7cOKsmKVkO29C98+HYukZT18nMJHUPd+KgSZI6weC5zlHNXP4nD8Nl8MHIAvo2LUkDZ/C6mC3cmrbYwylzhNEnCcwj6BPZ8TLbFLpZ6JJ9jF0n8GI82ZuF2wvOA1mwyngZe5+ka0TPH36TtRPBie/HSLnoGhLIDU49fPajnHuazQP/I5I35R+v8yCyTCSmFAVT0qS7durQd1JlH3hm/BTOB18j++B7jNpf8d5vmfCbVBlRyofh5NgEtT5VlD/LSwFd3wz8MiNhZXg/N5LA89uo64tNlZxAldRx9fD7rAz+ErpxLNqu7p9xSRcLe+QO/QSeMYNaHVbv5bSe2Wi3jN3ZhxMAf1vBx4VfwN5/BbActC3DCsGMEhMrLnhlK6iL4yrdCF8BhQdZ3zVn8fuAviN6ureBS7GcxAZj/JW8H65GN4jx6i/ZmJwCTBOrR8ND4NBO6Gl1BfHyzoXPHoRF8XdG0lsDyP167f9G/uj+hQnCB4vAAAAAElFTkSuQmCC",
+      "streamsets-datacollector-basic-lib:com_streamsets_pipeline_stage_destination_devnull_StatsNullDTarget" : null,
+      "streamsets-datacollector-basic-lib:com_streamsets_pipeline_stage_origin_spooldir_SpoolDirDSource" : "iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAe0lEQVR4Ae3VMQ7CMBBE0X+a4GNyIKSQHCxExCUw1BZGFN5t0Pzp/SQ3i3Ou6cSVO/qyM4NN3FC7WOKCUCaxoVzigUJWWSl0eqKw7ZRcQCzZwJEN6B+BlwEDw4AMGPg9AwZq9tFfQ4GZjwo7CtrGBD1i4Qj4nLl93jn3BjR5layvzA8cAAAAAElFTkSuQmCC",
+      "streamsets-datacollector-basic-lib:com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget" : null
+    },
+    "rulesElMetadata" : null
+  }
+}

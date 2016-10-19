@@ -1,0 +1,22 @@
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+##----------------Techtrends Github crawlers----------------##
+15 20 * * * cd /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/; python /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/feeds_parser.py >> /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/Logs/feedsLog.log 2>&1
+59 20 * * * cd /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/; python /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/BigQuery_GithubTimeline.py >> /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/Logs/BigQuryLog.log 2>&1
+
+##--- Feeds pipeline
+20 20 * * * /opt/sdc/bin/streamsets cli -U http://localhost:18630 manager reset-origin -n "tech_csv_csv_local_hdfs" >> /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/Logs/StreamfeedsLog.log 2>&1
+23 20 * * * /opt/sdc/bin/streamsets cli -U http://localhost:18630 manager start -n "tech_csv_csv_local_hdfs" >> /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/Logs/StreamfeedsLog.log 2>&1
+30 20 * * * /opt/sdc/bin/streamsets cli -U http://localhost:18630 manager stop -n "tech_csv_csv_local_hdfs" >> /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/Logs/StreamfeedsLog.log 2>&1
+
+##--- Repo pipeline
+30 21 * * * /opt/sdc/bin/streamsets cli -U http://localhost:18630 manager reset-origin -n "tech_repofile_csv_csv_local_hdfscopy" >> /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/Logs/StreamrepoLog.log 2>&1
+33 21 * * * /opt/sdc/bin/streamsets cli -U http://localhost:18630 manager start -n "tech_repofile_csv_csv_local_hdfscopy" >> /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/Logs/StreamrepoLog.log 2>&1
+47 21 * * * /opt/sdc/bin/streamsets cli -U http://localhost:18630 manager stop -n "tech_repofile_csv_csv_local_hdfscopy" >> /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/Logs/StreamrepoLog.log 2>&1
+
+##--- Timeline pipeline
+49 21 * * * /opt/sdc/bin/streamsets cli -U http://localhost:18630 manager reset-origin -n "tech_timelines_csv_csv_local_hdfs" >> /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/Logs/StreamtimelineLog.log 2>&1
+52 21 * * * /opt/sdc/bin/streamsets cli -U http://localhost:18630 manager start -n "tech_timelines_csv_csv_local_hdfs" >> /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/Logs/StreamtimelineLog.log 2>&1
+52 22 * * * /opt/sdc/bin/streamsets cli -U http://localhost:18630 manager stop -n "tech_timelines_csv_csv_local_hdfs" >> /tmp/GithubAnalysis/Techtrends/Codebase/Crawlers/Logs/StreamtimelineLog.log 2>&1
